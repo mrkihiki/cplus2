@@ -1,11 +1,101 @@
 ﻿// lab2_1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
-
 #include <iostream>
-
+using namespace std;
 int main()
 {
-    std::cout << "Hello World!\n";
+	setlocale(LC_ALL, "Russian");
+	int** Arr;
+	int num, a, b, n, n2, j = 0, i, z, x, c, cred, zap, i1, j1, i2, j2;
+	cout << "Введите a "; cin >> a;
+	cout << "Введите b>=a "; cin >> b;
+	cout << "Введите n "; cin >> n;
+	n2 = n;
+
+	Arr = new int* [n];// динамический массив
+	for (int i = 0; i < n; i++)
+	{
+		Arr[i] = new int[n];
+		for (int j = 0; j < n; j++)
+		{
+			num = rand() % (b - a + 1) + a;
+			Arr[i][j] = num;
+		}
+	}
+	cred = n / 2; cout << endl << cred << endl;
+	for (int i = 0; i < n; i++)
+	{
+
+		for (int j = 0; j < n; j++)
+		{
+			printf("%5d", Arr[i][j]);
+		}
+		cout << endl;
+	}	cout << "-----------кон----------------" << endl;
+	if (n % 2 == 0) { cout <<"sda"<< endl; }
+	else {
+		z = Arr[cred][cred]; x = Arr[cred][cred]; i1 = cred; i2 = cred; j1 = cred; j2 = cred; i = 0; j = 0;
+		while (i != cred && j != cred)
+		{
+			while (i >= j) {
+				if (Arr[i][j] < z) { z = Arr[i][j]; i1 = i; j1 = j; }//переделать
+				j++;
+			}
+			i++;
+			j = 0;
+		}	cout << "-----------кон----------------" << endl;
+		i = cred; zap = cred;
+		while (i <= n)
+		{
+			j = zap;
+			zap = j - 1;
+			while (j > 0)
+			{
+				if (Arr[i][j] < z) { z = Arr[i][j]; i1 = i; j1 = j; }//переделать
+				j--;
+			}
+			i++;
+		}	cout << "-----------кон----------------" << endl;
+		//
+		i = 0; j = n;
+		zap = n;	
+		while (i != cred && j != cred)
+		{
+			zap--; j = n;
+			while (zap < j) {
+				
+				if (Arr[i][j] < x) { x = Arr[i][j]; i2 = i; j2 = j; }//переделать
+				j--;
+			}
+			i++;
+		}	cout << "-----------кон----------------" << endl;
+		zap = cred; 
+		while (i < n)
+		{
+			j = zap;
+			zap = j + 1;
+			while (j <= n)
+			{
+				if (Arr[i][j] < x) { x = Arr[i][j]; i2 = i; j2 = j; }//переделать
+				j++;
+			}
+
+			i++;
+		}	cout << "-----------кон----------------" << endl;
+	}//для не чет
+	Arr[i1][j1] = x; Arr[i2][j2] = z;
+	cout << endl << "----------------------------------------------------------" << endl;
+	for (int i = 0; i < n; i++)
+	{
+
+		for (int j = 0; j < n; j++)
+		{
+			printf("%5d", Arr[i][j]);
+		}
+		cout << endl;
+	}
+
+	return 0;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
