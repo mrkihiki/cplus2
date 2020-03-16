@@ -1,3 +1,5 @@
 ﻿  lab2_1.cpp
 D:\pril\project\cplus2\№1\lab2_1\lab2_1\lab2_1.cpp(9,40): warning C4101:  c: неиспользованная локальная переменная
+D:\pril\project\cplus2\№1\lab2_1\lab2_1\lab2_1.cpp(9,31): warning C4101:  i: неиспользованная локальная переменная
+D:\pril\project\cplus2\№1\lab2_1\lab2_1\lab2_1.cpp(9,49): warning C4101:  zap: неиспользованная локальная переменная
   lab2_1.vcxproj -> D:\pril\project\cplus2\№1\lab2_1\Debug\lab2_1.exe

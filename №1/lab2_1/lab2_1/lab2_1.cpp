@@ -6,7 +6,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	int** Arr;
-	int num, a, b, n, n2, j = 0, i, z, x, c, cred, zap, i1, j1, i2, j2;
+	int num, a, b, n, n2, j = 0, i, z, x, c, cred, zap, i1, j1, i2, j2,ai,aj;
 	cout << "Введите a "; cin >> a;
 	cout << "Введите b>=a "; cin >> b;
 	cout << "Введите n "; cin >> n;
@@ -32,57 +32,30 @@ int main()
 		}
 		cout << endl;
 	}	cout << "-----------кон----------------" << endl;
-	if (n % 2 == 0) { cout <<"sda"<< endl; }
-	else {
-		z = Arr[cred][cred]; x = Arr[cred][cred]; i1 = cred; i2 = cred; j1 = cred; j2 = cred; i = 0; j = 0;
-		while (i != cred && j != cred)
-		{
-			while (i >= j) {
-				if (Arr[i][j] < z) { z = Arr[i][j]; i1 = i; j1 = j; }//переделать
-				j++;
-			}
-			i++;
-			j = 0;
-		}	cout << "-----------кон----------------" << endl;
-		i = cred; zap = cred;
-		while (i <= n)
-		{
-			j = zap;
-			zap = j - 1;
-			while (j > 0)
-			{
-				if (Arr[i][j] < z) { z = Arr[i][j]; i1 = i; j1 = j; }//переделать
-				j--;
-			}
-			i++;
-		}	cout << "-----------кон----------------" << endl;
-		//
-		i = 0; j = n;
-		zap = n;	
-		while (i != cred && j != cred)
-		{
-			zap--; j = n;
-			while (zap < j) {
-				
-				if (Arr[i][j] < x) { x = Arr[i][j]; i2 = i; j2 = j; }//переделать
-				j--;
-			}
-			i++;
-		}	cout << "-----------кон----------------" << endl;
-		zap = cred; 
-		while (i < n)
-		{
-			j = zap;
-			zap = j + 1;
-			while (j <= n)
-			{
-				if (Arr[i][j] < x) { x = Arr[i][j]; i2 = i; j2 = j; }//переделать
-				j++;
-			}
 
-			i++;
-		}	cout << "-----------кон----------------" << endl;
-	}//для не чет
+		z = 1; x = -1; 
+		ai = 0; aj = n - 1; j = 0;
+		while (ai <= aj)
+		{
+			for (int i = ai; i <= aj; i++)
+			{
+				if(z!=1){if (Arr[i][j] > z && Arr[i][j] < 0) { z = Arr[i][j]; i1 = i; j1 = j; }}
+				else{ if (Arr[i][j] < 0) { z = Arr[i][j]; i1 = i; j1 = j; } }
+			}
+			ai++; aj--; j++;
+		}
+		ai = 0; aj = n - 1; j = n - 1;
+		while (aj <= ai)
+		{
+			for (int i = ai; i <= aj; i++)
+			{
+				if (x != -1) { if (Arr[i][j] < x && Arr[i][j] > 0) { x = Arr[i][j]; i2 = i; j2 = j; }}
+				else { if (Arr[i][j] > 0) { x = Arr[i][j]; i2 = i; j2 = j; } }
+			}
+			ai++; aj--; j--;
+		}
+	cout <<i1<<"  "<<j1<<"   " <<Arr[i1][j1]<<endl;
+	cout << i2 << "  " << j2 << "   " << Arr[i2][j2] << endl;
 	Arr[i1][j1] = x; Arr[i2][j2] = z;
 	cout << endl << "----------------------------------------------------------" << endl;
 	for (int i = 0; i < n; i++)
