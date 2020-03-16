@@ -4,40 +4,49 @@
 #include <iostream>
 #include <string.h>
 using namespace std;
-void vds(char gg[]);
+void vds(char** gg);
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	char z[2]=" ",ll[2]="o",zz[2]="x",g[]="          ";
-	vds(g); int v; bool t1=true,t2=true;
+	char z[2] = " ", ll[2] = "o", zz[2] = "x"; char** g;
+    int i,j; bool t1=true,t2=true;
+	g = new char* [3];// динамический массив
+	for (int i = 0; i < 3; i++)
+	{
+		g[i] = new char[3];
+		for (int j = 0; j < 3; j++)
+		{
+			g[i][j] = z[0];
+		}
+	}
+	vds(g);
 	while (t1)
 	{
 		t1 = false;
 		while (t2) {
-			cout << "Сделай ход в свободную ячейку (1 до 9) ";
-			cin >> v;
-			
-		
-			if (g[v] == z[0]) {  g[v] = zz[0]; t2 = false; }
-		}
-		t2 = true;
-			for (int i = 1; i < 10; i++)
+			cout << "Сделай ход в свободную ячейку (строка и столбец) ";
+			cout << "строка (0-2) "; cin >> i; cout << "столбец (0-2) "; cin >> j;
+			if (g[i][j] == z[0]) {  g[i][j] = zz[0]; t2 = false; }
+		} 
+		t2 = true; for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
 			{
-				if (g[i] == z[0]) {  g[i] = ll[0]; t1 = true; i = 10; }
+				if (g[i][j] == z[0]) { g[i][j] = ll[0]; t1 = true; i = 10; j = 10; }
 			}
-			
+		}
 		
 		vds(g);
 	}
 	return 0;
 }
-void vds(char gg[]){
+void vds(char** gg){
 	
-		cout << endl << gg[1] << "|" << gg[2] << "|" << gg[3] << endl;
+		cout << endl << gg[0][0] << "|" << gg[0][1] << "|" << gg[0][2] << endl;
 		cout << "- - -" << endl;
-		cout << gg[4] << "|" << gg[5] << "|" << gg[6] << endl;
+		cout << gg[1][0] << "|" << gg[1][1] << "|" << gg[1][2] << endl;
 		cout << "- - -" << endl;
-		cout << gg[7] << "|" << gg[8] << "|" << gg[9] << endl;
+		cout << gg[2][0]<< "|" << gg[2][1] << "|" << gg[2][2] << endl;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
