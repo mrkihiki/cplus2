@@ -6,12 +6,12 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	int** Arr;
-	int num, a, b, n, n2, j = 0, i, z, x, c, cred, zap, i1, j1, i2, j2,ai,aj;
+	int num, a, b, n, n2, j = 0, i, z, x, c, cred, zap, i1=-1, j1=-1, i2=-1, j2=-1,ai,aj;
 	cout << "Введите a "; cin >> a;
 	cout << "Введите b>=a "; cin >> b;
 	cout << "Введите n "; cin >> n;
 	n2 = n;
-
+	cout<< endl;
 	Arr = new int* [n];// динамический массив
 	for (int i = 0; i < n; i++)
 	{
@@ -22,7 +22,7 @@ int main()
 			Arr[i][j] = num;
 		}
 	}
-	cred = n / 2; cout << endl << cred << endl;
+	cred = n / 2; 
 	for (int i = 0; i < n; i++)
 	{
 
@@ -31,7 +31,7 @@ int main()
 			printf("%5d", Arr[i][j]);
 		}
 		cout << endl;
-	}	cout << "-----------кон----------------" << endl;
+	}	cout << "----------------------------------------------------------" << endl;
 
 		z = 1; x = -1; 
 		ai = 0; aj = n - 1; j = 0;
@@ -45,7 +45,7 @@ int main()
 			ai++; aj--; j++;
 		}
 		ai = 0; aj = n - 1; j = n - 1;
-		while (aj <= ai)
+		while (ai <= aj)
 		{
 			for (int i = ai; i <= aj; i++)
 			{
@@ -54,9 +54,10 @@ int main()
 			}
 			ai++; aj--; j--;
 		}
-	cout <<i1<<"  "<<j1<<"   " <<Arr[i1][j1]<<endl;
-	cout << i2 << "  " << j2 << "   " << Arr[i2][j2] << endl;
-	Arr[i1][j1] = x; Arr[i2][j2] = z;
+		if (i1 > -1 && i2 > -1 && j1 > -1 && j2 > -1) {
+			Arr[i1][j1] = x; Arr[i2][j2] = z;
+		}
+		else { cout << "нет таких чисел" << endl; }
 	cout << endl << "----------------------------------------------------------" << endl;
 	for (int i = 0; i < n; i++)
 	{
