@@ -9,25 +9,85 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	int* ms; char buff[50];
-	int i = 0, n, j = 0; ofstream fout; ifstream vod;
+	int* ms4; int* ms3; int** Arr1; int** Arr2;
+	char buff[50];
+	int n, i = 0, j = 0, i1 = 0, j1 = 0, i2 = 0, j2 = 0, i3 = -1, i4 = -1; ofstream fout; ifstream vod;
 	vod.open("1.txt");//кол чет чисел.
 	while (!vod.eof())
 	{
-		vod.getline(buff, 50); i++;
+		vod.getline(buff, 50); i1++;
 
 	}
-	cout << i << endl;
+	cout << i1 << endl;
 	vod.close();
 	vod.open("1.txt");//кол чет чисел.
 	while (!vod.eof())
 	{
 		vod >> n;
-		j++;
+		j1++;
 	}
-	j = j / i;
+	j1 = j1 / i1;
 	vod.close();
+
+	Arr1 = new int* [i1];// динамический массив
+	for (int i = 0; i < i1; i++)
+	{
+		Arr1[i] = new int[j1];
+		for (int j = 0; j < j1; j++)
+		{
+			vod >> n;
+			Arr1[i][j] = n;
+		}
+	}
+
+
+	for (int i = 0; i < i1; i++)
+	{
+
+		for (int j = 0; j < j1; j++)
+		{
+			printf("%5d", Arr1[i][j]);
+		}
+		cout << endl;
+	}
+	cout << j1;
+	vod.open("2.txt");//кол чет чисел.
+	while (!vod.eof())
+	{
+		vod.getline(buff, 50); i2++;
+
+	}
+
+	vod.close();
+	vod.open("2.txt");//кол чет чисел.
+	while (!vod.eof())
+	{
+		vod >> n;
+		j2++;
+	}
+	j2 = j2 / i2;
+	vod.close();
+	vod.open("3.txt");//кол чет чисел.
+	while (!vod.eof())
+	{
+		vod >> n;
+		i3++;
+	}
+	
+	vod.close();
+	ms3 = new int[i3];
+	vod.open("4.txt");//кол чет чисел.
+	while (!vod.eof())
+	{
+		vod >> n;
+		i4++;
+	}
+	
+	vod.close();
+	ms4 = new int[i4];
 }
+
+
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
 
