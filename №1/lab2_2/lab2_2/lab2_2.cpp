@@ -7,6 +7,11 @@
 #include <stdio.h>
 #include <fstream>
 using namespace std;
+void str1(int** Arr1, int i1, int i3, int* ms3);
+void str2(int** Arr2, int i2,  int i4, int* ms4);
+void st(int** Arr2, int i2, int j2, int T);
+void mn(int** Arr1, int i1, int j1);
+void summ(int* ms3, int* ms4, int i3);
 int main()
 {
 	setlocale(LC_ALL, "Russian"); bool prov = false;
@@ -111,7 +116,7 @@ int main()
 
 	for (int i = 0; i < i3; i++)
 	{
-			printf("%5d", ms3[i]);
+		cout << ms3[i]<<endl;
 	}
 	cout << endl<<"----------------------------------------" << endl;
 
@@ -135,25 +140,198 @@ int main()
 
 	for (int i = 0; i < i4; i++)
 	{
-		printf("%5d", ms4[i]);
+		cout << ms4[i] << endl;
 	}
 	cout <<endl <<"----------------------------------------" << endl;
 
 	////////////////////////////////////////////////////////
 	cout << "T = "; cin >> T;
-	while (prov == false)
+	//while (prov == false)
+	//{
+	//
+	//	cout << "n = "; cin >> n;
+	//	cout << "m = "; cin >> m;
+	//	if (m < i4 && m < i3 && m < i2 && m < j1 && n < j2 && n < i1) { prov = true; }
+	//	else { cout << "нет числа" << endl; }
+	//}
+	//sum = 5 * Arr1[n][m] * ms3[m] + pow(Arr2[m][n],T) * ms4[m];
+	mn(Arr1, i1, j1);
+	st(Arr2, i2, j2,T);
+	str1(Arr1, i1, i3, ms3);
+	str2(Arr2, i2, i4, ms4);
+	summ(ms3, ms4, i3);
+
+	cout <<endl <<"----------------------------------------" << endl;
+	for (int i = 0; i < i3; i++)
 	{
-
-		cout << "n = "; cin >> n;
-		cout << "m = "; cin >> m;
-		if (m < i4 && m < i3 && m < i2 && m < j1 && n < j2 && n < i1) { prov = true; }
-		else { cout << "нет числа" << endl; }
+			printf("%5d", ms3[i]);
+		cout << endl;
 	}
-	sum = 5 * Arr1[n][m] * ms3[m] + pow(Arr2[m][n],T) * ms4[m];
 
-	cout << "sum = " << sum << endl;
+
+	//cout << "sum = " << sum << endl;
 }
 
+void summ(int* ms3, int* ms4, int i3) {
+
+	for (int i = 0; i < i3; i++)
+	{
+		ms3[i] = ms3[i] + ms4[i];
+	}
+
+}
+void str1(int** Arr1, int i1, int i3, int* ms3)
+{
+	int* c; // Результат
+	int* a;
+	a = new int[i3];
+	for (int i = 0; i < i3; i++)
+	{
+
+
+		a[i] = ms3[i];
+	}
+
+	c = new int[i3];
+	for (int i = 0; i < i3; i++)
+
+	{
+
+		c[i] = 0;
+	}
+	for (int i = 0; i < i3; i++) {
+
+		for (int k = 0; k < i3; k++) {
+			c[i] += Arr1[i][k] * a[k];
+		}
+
+	}
+
+
+
+
+
+	for (int i = 0; i < i3; i++)
+	{
+
+
+		ms3[i] = c[i];
+
+	}
+
+}
+
+
+
+void str2(int** Arr2, int i2,int i4,int* ms4)
+{
+	int* c; // Результат
+	int* a;
+	a = new int [i4];
+	for (int i = 0; i < i4; i++)
+	{
+		
+
+			a[i] = ms4[i];
+	}
+
+		c = new int [i4];
+		for (int i = 0; i < i4; i++)
+	
+			{
+
+				c[i] = 0;
+			}
+		for (int i = 0; i < i4; i++) {
+			
+				for (int k = 0; k < i4; k++) {
+					c[i] += Arr2[i][k] * a[k];
+				}
+
+			}
+
+		
+
+
+
+		for (int i = 0; i < i4; i++)
+		{
+			
+
+				ms4[i] = c[i];
+			
+		}
+	
+	}
+
+
+
+
+
+
+void st(int** Arr2, int i2, int j2,int T)
+{
+	int** c; // Результат
+	int** a;
+	a = new int* [i2];
+	for (int i = 0; i < i2; i++)
+	{
+		a[i] = new int[j2];
+		for (int j = 0; j < j2; j++)
+		{
+
+			a[i][j] = Arr2[i][j];
+		}
+	}
+
+		while (T > 1)
+		{
+
+			c = new int* [i2];
+			for (int i = 0; i < i2; i++)
+			{
+				c[i] = new int[j2];
+				for (int j = 0; j < j2; j++)
+				{
+
+					c[i][j] = 0;
+				}
+			}
+			for (int i = 0; i < i2; i++) {
+				for (int j = 0; j < j2; j++) {
+					for (int k = 0; k < i2; k++) {
+						c[i][j] += Arr2[i][k] * a[k][j];
+					}
+				}
+
+			}
+
+
+
+			for (int i = 0; i < i2; i++)
+			{
+				for (int j = 0; j < j2; j++)
+				{
+
+					Arr2[i][j] = c[i][j];
+				}
+			}
+			T--;
+		}
+	
+}
+
+
+void mn(int** Arr1, int i1, int j1)
+{
+	for (int i = 0; i < i1; i++)
+	{
+		for (int j = 0; j < j1; j++)
+		{
+			Arr1[i][j] = Arr1[i][j]*5;
+		}
+	}
+}
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"

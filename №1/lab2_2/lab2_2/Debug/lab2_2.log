@@ -1,3 +1,6 @@
 ﻿  lab2_2.cpp
-D:\pril\project\cplus2\№1\lab2_2\lab2_2\lab2_2.cpp(152,32): warning C4244:  =: преобразование "double" в "int", возможна потеря данных
+D:\pril\project\cplus2\№1\lab2_2\lab2_2\lab2_2.cpp(159,18): warning C4244:  аргумент: преобразование "float" в "int", возможна потеря данных
+D:\pril\project\cplus2\№1\lab2_2\lab2_2\lab2_2.cpp(20,75): warning C4101:  m: неиспользованная локальная переменная
+D:\pril\project\cplus2\№1\lab2_2\lab2_2\lab2_2.cpp(20,77): warning C4101:  sum: неиспользованная локальная переменная
+D:\pril\project\cplus2\№1\lab2_2\lab2_2\lab2_2.cpp(20,73): warning C4101:  n: неиспользованная локальная переменная
   lab2_2.vcxproj -> D:\pril\project\cplus2\№1\lab2_2\Debug\lab2_2.exe
