@@ -1,0 +1,70 @@
+
+#include <math.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdio.h>
+#include <fstream>
+using namespace std;
+void fn(char* buff, char** Arr1, int jn, int i);
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int  i = 0, j = 0, i1 = 0, i2 = 0, j1 = 0, j2 = 0, j3 = 0; char n1; int* jn;
+	char** Arr1; char buff[500]; int* jj;
+	ofstream fout; ifstream vod;
+
+	vod.open("1.txt");//кол чет чисел.
+	while (!vod.eof())
+	{
+		vod.getline(buff, 50);
+		i1++;
+	}
+
+	vod.close();
+
+	jn = new int[i1];
+
+	vod.open("1.txt");
+	for (int i = 0; i < i1; i++)
+	{
+		vod.getline(buff, 50);
+		jn[i]=strlen(buff);
+	
+	}
+	vod.close();
+//	cout << "j1 = " << jn[0];
+//	cout << "j2 = " << jn[1];
+//	cout << "j3 = " << jn[2];
+
+	Arr1 = new char* [i1];// динамический массив
+	for (int i = 0; i < i1; i++)
+	{
+		Arr1[i] = new char[jn[i]];
+		
+	}
+	cout << "----" << endl;
+	vod.open("1.txt");
+	for (int i = 0; i < i1; i++)
+	{
+		
+		vod.getline(buff, 50);
+		
+		//Arr1[i] = buff;
+		fn(buff, Arr1, jn[i], i);
+	
+		
+	}
+	vod.close();
+
+	cout << Arr1[0] <<endl<< Arr1[1]<<endl << Arr1[2]<<endl;
+}
+
+
+void fn(char* buff,char** Arr1,int jni,int io)
+{
+	for (int ji = 0; ji < jni+4; ji++)
+	{
+		Arr1[io][ji] = buff[ji];
+	}
+}
